@@ -11,7 +11,14 @@
                     <h5 class="card-title font-weight-bold">{{$product->name}}</h5>
                     <p class="card-text">Price: {{$product->price}}</p>
                     <p class="card-text">Description: {{$product->description}}</p>
-                    <a href="/cart/{{$product->id}}" class="btn btn-secondary">Add to Cart</a>
+                    <form method="GET" action="{{ route('search') }}">
+                        @csrf
+                        <div class="d-flex align-items-center">
+                            <p style="margin:0 8px 0 0;">Quantity: </p>
+                            <input id="quantity" name="quantity" type="number" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-secondary mt-3"> Add to Cart </button>
+                    </form>
                 </div>
             </div>
         </div>   

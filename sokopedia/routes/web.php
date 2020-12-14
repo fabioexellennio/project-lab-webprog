@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomepageController@homepage');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/search', 'HomeController@search')->name('search');
+Route::get('/product/{id}', 'ProductController@viewProductDetail');
+Route::get('/cart/{id}', 'ProductController@viewProductCart');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

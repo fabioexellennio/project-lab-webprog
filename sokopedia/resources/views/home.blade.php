@@ -2,22 +2,30 @@
 
 @section('content')
 <div class="container">
+
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+        @foreach ($data as $product)
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{Storage::url('images/'.$product['image'])}}" alt="{{$product['image']}}">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">{{$product->name}}</h5>
+                        <p class="card-text">{{$product->description}}</p>
+                        @if(!Auth::guest())
+                            <a href="/product/{{$product->id}}" class="btn btn-secondary">View Detail</a>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
+    </div>
+    <div class="row justify-content-center mt-5">
+            {{$data->links()}}
     </div>
 </div>
 @endsection
+
+
+
+
+
