@@ -44,18 +44,25 @@
                                 <button type="submit" class="btn btn-primary ml-1"> Search </button>
                             </div>
                         </form>
-
-                        <div class="mr-4 ml-4">
+                        
+                    @show
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        <div class="mr-2">
                             <a href="/list-cart" class="btn btn-secondary">Cart</a>
                         </div>
 
                          <div class="mr-2 ml-2">
                             <a href="/transaction" class="btn btn-secondary">History</a>
                         </div>
-                    @show
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                        
+                        @if(Auth::user()->role === "Admin")
+                            <div class="mr-2 ml-2">
+                                <a href="/admin" class="btn btn-secondary">Admin</a>
+                            </div>
+                        @endif
+
                         @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

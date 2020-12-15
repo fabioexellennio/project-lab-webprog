@@ -30,4 +30,7 @@ Route::get('/transaction', 'TransactionController@viewTransaction');
 Route::get('/transaction-detail/{id}', 'TransactionController@viewDetail');
 
 
+Route::get('/admin', 'AdminController@viewAdmin');
+
+
 Auth::routes();

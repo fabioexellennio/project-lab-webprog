@@ -9,7 +9,7 @@
 
     <div class="row justify-content-center">
         @if(!count($transactions))
-            <h2>There is no item in transactions</h2>
+            <h2>There is no history transactions</h2>
         @endif
 
         @foreach ($transactions as $transaction)

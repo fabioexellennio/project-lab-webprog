@@ -44,7 +44,7 @@ class CartController extends Controller
             ]
         );
 
-        return redirect('/list-cart');
+        return redirect('/');
     }
 
     public function deleteCart($id)
