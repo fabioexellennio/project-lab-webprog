@@ -32,5 +32,14 @@ Route::get('/transaction-detail/{id}', 'TransactionController@viewDetail');
 
 Route::get('/admin', 'AdminController@viewAdmin');
 
+Route::get('/admin/view-product', 'AdminController@viewProductAdmin');
+Route::delete('/admin/delete-product/{id}', 'AdminController@deleteProduct');
+Route::get('/admin/insert-product', 'AdminController@insertProductAdmin');
+
+Route::get('/admin/view-category', 'AdminController@viewCategoryAdmin');
+Route::get('/admin/view-category-product/{id}', 'AdminController@viewProductCategory');
+Route::get('/admin/insert-category', 'AdminController@insertCategoryAdmin');
+
+
 
 Auth::routes();
