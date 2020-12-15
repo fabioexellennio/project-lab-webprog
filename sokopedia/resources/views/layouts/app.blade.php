@@ -59,7 +59,7 @@
                         
                         @if(Auth::user()->role === "Admin")
                             <div class="mr-2 ml-2">
-                                <a href="/admin" class="btn btn-secondary">Admin</a>
+                                <a href="/admin" class="btn btn-info">Admin</a>
                             </div>
                         @endif
 

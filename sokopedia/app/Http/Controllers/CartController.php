@@ -60,7 +60,7 @@ class CartController extends Controller
     {
 
         $carts = Cart::where('user_id', Auth::user()->id)->get();
-        if (isset($carts)) {
+        if (!isset($carts)) {
             return redirect('/');
         }
 
