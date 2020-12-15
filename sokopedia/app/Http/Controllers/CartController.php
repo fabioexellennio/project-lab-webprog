@@ -34,7 +34,9 @@ class CartController extends Controller
 
         $user = Auth::user();
         $carts = $user->carts;
-
+        foreach ($carts as $cart) {
+            dd($cart->product);
+        }
         return view('listcart', compact('carts'));
     }
 }
