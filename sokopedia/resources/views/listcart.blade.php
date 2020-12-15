@@ -7,17 +7,27 @@
         @foreach ($carts as $cart)
             <div class="col-md-4">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{Storage::url('images/'.$cart->product['image'])}}" alt="{{$cart->product['image']}}">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-bold">{{$cart->product->name}}</h5>
-                        <p class="card-text">{{$cart->product->description}}</p>
-                        @if(!Auth::guest())
-                            <a href="/product/{{$cart->product->id}}" class="btn btn-secondary">View Detail</a>
-                        @endif
-                    </div>
+                        <img class="card-img-left" src="{{Storage::url('images/'.$cart->product['image'])}}" alt="{{$cart->product['image']}}">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold">{{$cart->product->name}}</h5>
+                            <p class="card-text">Price: Rp.{{$cart->product->price}}</p>
+                            <p class="card-text">Quantity: {{$cart->quantity}}</p>
+
+                            <form action="/remove-cart/{{$cart->id}}" method="POST">
+                                {{method_field('DELETE')}}
+                                @csrf
+                                <input type="submit" class="btn btn-danger" value="Delete"/>
+                                <a href="/cart/{{$cart->product->id}}" class="btn btn-secondary">Edit</a>
+                            </form>
+
+                            
+                        </div>
                 </div>
             </div>
         @endforeach
+
+        <a href="#" class="btn btn-secondary mt-5">Checkout</a>
     </div>
 </div>
 @endsection

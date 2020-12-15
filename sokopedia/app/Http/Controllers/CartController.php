@@ -11,6 +11,10 @@ class CartController extends Controller
 {
     public function viewCart()
     {
+        $user = Auth::user();
+        $carts = $user->carts;
+
+        return view('listcart', compact('carts'));
     }
 
     public function insertCart(Request $request, $id)
@@ -32,11 +36,19 @@ class CartController extends Controller
         $newcart->user_id = Auth::user()->id;
         $newcart->save();
 
-        $user = Auth::user();
-        $carts = $user->carts;
-        foreach ($carts as $cart) {
-            dd($cart->product);
+        return redirect('/list-cart');
+    }
+
+    public function deleteCart($id)
+    {
+        $cart = Cart::find($id);
+        if (isset($cart)) {
+            $cart->delete();
         }
-        return view('listcart', compact('carts'));
+        return redirect('/list-cart');
+    }
+
+    public function checkoutCart()
+    {
     }
 }

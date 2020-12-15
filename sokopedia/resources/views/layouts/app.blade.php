@@ -44,6 +44,14 @@
                                 <button type="submit" class="btn btn-primary ml-1"> Search </button>
                             </div>
                         </form>
+
+                        <div class="mr-4 ml-4">
+                            <a href="/list-cart" class="btn btn-secondary">Cart</a>
+                        </div>
+
+                         <div class="mr-2 ml-2">
+                            <a href="/list-cart" class="btn btn-secondary">Transaction</a>
+                        </div>
                     @show
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
