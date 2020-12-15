@@ -16,11 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'HomeController@search')->name('search');
+
+
 Route::get('/product/{id}', 'ProductController@viewProductDetail');
 Route::get('/cart/{id}', 'ProductController@viewProductCart');
+
 Route::post('/insert-cart/{id}', 'CartController@insertCart');
 Route::get('/list-cart', 'CartController@viewCart');
 Route::delete('/remove-cart/{id}', 'CartController@deleteCart');
+
+Route::get('/list-cart/checkout', 'CartController@checkoutCart');
+Route::get('/transaction', 'TransactionController@viewTransaction');
+Route::get('/transaction-detail/{id}', 'TransactionController@viewDetail');
 
 
 Auth::routes();

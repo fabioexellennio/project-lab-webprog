@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cart;
+use App\DetailTransaction;
+use App\Transaction;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 use Validator;
 
 class CartController extends Controller
@@ -29,12 +32,17 @@ class CartController extends Controller
             return back()->withErrors($validator);
         }
 
-
-        $newcart = new Cart;
-        $newcart->quantity = $request->quantity;
-        $newcart->product_id = $id;
-        $newcart->user_id = Auth::user()->id;
-        $newcart->save();
+        Cart::updateOrCreate(
+            [
+                'user_id' => Auth::user()->id,
+                'product_id' => $id,
+            ],
+            [
+                'quantity' => $request->quantity,
+                'product_id' => $id,
+                'user_id' => Auth::user()->id
+            ]
+        );
 
         return redirect('/list-cart');
     }
@@ -50,5 +58,26 @@ class CartController extends Controller
 
     public function checkoutCart()
     {
+
+        $carts = Cart::where('user_id', Auth::user()->id)->get();
+        if (isset($carts)) {
+            return redirect('/');
+        }
+
+        $transaction = new Transaction;
+        $transaction->user_id = Auth::user()->id;
+        $transaction->save();
+
+        foreach ($carts as $cart) {
+            $detail = new DetailTransaction;
+            $detail->transaction_id = $transaction->id;
+            $detail->product_id = $cart->product->id;
+            $detail->quantity = $cart->quantity;
+            $detail->save();
+        }
+
+        $carts->each->delete();
+
+        return redirect('/transaction');
     }
 }

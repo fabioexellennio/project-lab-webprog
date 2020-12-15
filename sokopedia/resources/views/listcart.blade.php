@@ -3,7 +3,15 @@
 @section('content')
 <div class="container">
 
+    @if(count($carts))
+        <h2>Cart</h2>
+    @endif
+
     <div class="row justify-content-center">
+        @if(!count($carts))
+            <h2>There is no item in cart</h2>
+        @endif
+
         @foreach ($carts as $cart)
             <div class="col-md-4">
                 <div class="card" style="width: 18rem;">
@@ -27,7 +35,11 @@
             </div>
         @endforeach
 
-        <a href="#" class="btn btn-secondary mt-5">Checkout</a>
+        @if(count($carts))
+        <div class="col-md-12">
+            <a href="/list-cart/checkout" class="btn btn-secondary mt-5">Checkout</a>
+        </div>
+        @endif
     </div>
 </div>
 @endsection

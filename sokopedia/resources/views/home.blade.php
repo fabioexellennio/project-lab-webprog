@@ -3,7 +3,15 @@
 @section('content')
 <div class="container">
 
+    @if(count($data))
+        <h2>product</h2>
+    @endif
+
     <div class="row justify-content-center">
+        @if(!count($data)) 
+            <h2>There is no product</h2>
+        @endif
+        
         @foreach ($data as $product)
             <div class="col-md-4">
                 <div class="card" style="width: 18rem;">

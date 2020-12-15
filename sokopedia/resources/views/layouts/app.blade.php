@@ -50,7 +50,7 @@
                         </div>
 
                          <div class="mr-2 ml-2">
-                            <a href="/list-cart" class="btn btn-secondary">Transaction</a>
+                            <a href="/transaction" class="btn btn-secondary">History</a>
                         </div>
                     @show
                     <!-- Right Side Of Navbar -->
