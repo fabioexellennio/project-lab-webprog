@@ -3,11 +3,12 @@
 @section('content')
 <div class="container">
 
+    <h2>Items</h2>
+    
     <div class="row justify-content-center">
-
         @foreach ($details as $detail)
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
+            <div class="col-md-12 mt-2">
+                <div class="card flex-row flex-wrap" style="width: 18rem;">
                         <img class="card-img-left" src="{{Storage::url('images/'.$detail->product['image'])}}" alt="{{$detail->product['image']}}">
                         
                         <div class="card-body">

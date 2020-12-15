@@ -13,8 +13,8 @@
         @endif
 
         @foreach ($carts as $cart)
-            <div class="col-md-4">
-                <div class="card" style="width: 18rem;">
+            <div class="col-md-12 mt-2">
+                <div class="card flex-row flex-wrap" style="width: 18rem;">
                         <img class="card-img-left" src="{{Storage::url('images/'.$cart->product['image'])}}" alt="{{$cart->product['image']}}">
                         
                         <div class="card-body">
