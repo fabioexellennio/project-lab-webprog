@@ -10,7 +10,7 @@
                     <img class="card-img-top" src="{{Storage::url('images/'.$product['image'])}}" alt="{{$product['image']}}">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">{{$product->name}}</h5>
-                        <p class="card-text">{{$product->description}}</p>
+                        <p class="card-text">Rp.{{$product->price}}</p>
                         @if(!Auth::guest())
                             <a href="/product/{{$product->id}}" class="btn btn-secondary">View Detail</a>
                         @endif
