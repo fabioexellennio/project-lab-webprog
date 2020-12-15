@@ -13,7 +13,7 @@
                         
                         <div class="card-body">
                             <h5 class="card-title font-weight-bold">{{$detail->product->name}}</h5>
-                            <p class="card-text">Price: Rp.{{$detail->product->price}}</p>
+                            <p class="card-text">Price: Rp.{{$detail->quantity * $detail->product->price}}</p>
                             <p class="card-text">Quantity: {{$detail->quantity}}</p>
                         </div>
                 </div>

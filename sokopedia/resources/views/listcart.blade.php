@@ -19,7 +19,7 @@
                         
                         <div class="card-body">
                             <h5 class="card-title font-weight-bold">{{$cart->product->name}}</h5>
-                            <p class="card-text">Price: Rp.{{$cart->product->price}}</p>
+                            <p class="card-text">Total Price: Rp.{{$cart->quantity * $cart->product->price}}</p>
                             <p class="card-text">Quantity: {{$cart->quantity}}</p>
 
                             <form action="/remove-cart/{{$cart->id}}" method="POST">
