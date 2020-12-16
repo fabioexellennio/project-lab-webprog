@@ -11,7 +11,7 @@
         <a href="/admin/insert-category" class="btn btn-outline-secondary">Add Category</a>
 
          <h3 class="mt-5 mb-1"> Add Product </h3>
-            <form method="POST" action="/admin/insert-product/inserted">
+            <form enctype="multipart/form-data" method="POST" action="/admin/insert-product/inserted">
                 @csrf
                 <label class="mt-4 mb-2">Product Name</label>
                 <div class="d-flex align-items-center mb-2">

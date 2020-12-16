@@ -43,8 +43,9 @@ class AdminController extends Controller
             'category' => 'required',
             'description' => 'required',
             'price' => 'required|integer|min:100',
-            'image' => 'required|image'
+            'image' => 'required|image|max:10000'
         ];
+
 
         $validator = Validator::make($request->all(), $rules);
 
