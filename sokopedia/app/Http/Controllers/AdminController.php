@@ -39,10 +39,11 @@ class AdminController extends Controller
     public function postInsertProduct(Request $request)
     {
         $rules = [
-            'name' => 'required',
+            'name' => 'required|unique:products,name',
             'category' => 'required',
             'description' => 'required',
-            'price' => 'required|integer|min:100'
+            'price' => 'required|integer|min:100',
+            'image' => 'required|image'
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -85,7 +86,7 @@ class AdminController extends Controller
     public function postInsertCategory(Request $request)
     {
         $rules = [
-            'categoryname' => 'required'
+            'categoryname' => 'required|unique:categories,name'
         ];
 
         $validator = Validator::make($request->all(), $rules);
