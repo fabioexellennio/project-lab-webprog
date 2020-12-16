@@ -9,7 +9,7 @@
         @foreach ($details as $detail)
             <div class="col-md-12 mt-2">
                 <div class="card flex-row flex-wrap" style="width: 18rem;">
-                        <img class="card-img-left" src="{{Storage::url('images/'.$detail->product['image'])}}" alt="{{$detail->product['image']}}">
+                        <img class="card-img-top" src="{{Storage::url('images/'.$detail->product['image'])}}" alt="{{$detail->product['image']}}">
                         
                         <div class="card-body">
                             <h5 class="card-title font-weight-bold">{{$detail->product->name}}</h5>

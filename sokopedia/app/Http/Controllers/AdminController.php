@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class AdminController extends Controller
@@ -52,13 +53,15 @@ class AdminController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator);
         }
-
+        
+        $file = $request->file('image');
+        Storage::disk('public')->putFileAs('images', $request->file('image'), $file->getClientOriginalName());
         $product = new Product;
         $product->category_id = $request->category;
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->image = "";
+        $product->image = $file->getClientOriginalName();
         $product->save();
 
         return redirect('/admin/view-product');

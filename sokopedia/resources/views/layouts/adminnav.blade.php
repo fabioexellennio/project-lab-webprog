@@ -37,36 +37,27 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-                    @section('search')
-                        <form method="GET" action="{{ route('search') }}">
-                            <div class="d-flex">
-                                <input style="width:500px;" id="search" name="search" type="text" placeholder="Search by Name" class="form-control" autocomplete="search">
-                                <button type="submit" class="btn btn-primary ml-1"> Search </button>
-                            </div>
-                        </form>
-                        
-                    @show
+                   
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         
-                        @if(!Auth::guest())
-                          
+                        {{-- @if(!Auth::guest())
+                            @if(Auth::user()->role === "Admin") --}}
                                 <div class="mr-2">
-                                    <a href="/list-cart" class="d-flex btn btn-secondary">
-                                        <div>Cart </div>
-                                        <div class="bg-light text-dark ml-2 pl-1 pr-1">{{ Session::get('totalItem')}}</div>
-                                    </a>
+                                    <a href="/admin/view-product" class="btn btn-outline-primary">View Product</a>
                                 </div>
-                                <div class="mr-2 ml-2">
-                                    <a href="/transaction" class="btn btn-secondary">History</a>
+                                 <div class="mr-2">
+                                    <a href="/admin/insert-product" class="btn btn-outline-primary">Add Product</a>
                                 </div>
-                              @if(Auth::user()->role === "Admin")
-                               <div class="mr-2 ml-2">
-                                    <a href="/admin" class="btn btn-info">Admin</a>
+                                 <div class="mr-2">
+                                    <a href="/admin/view-category" class="btn btn-outline-secondary ml-4">View Category</a>
                                 </div>
-                            @endif
-                        @endif
+                                 <div class="mr-2">
+                                    <a href="/admin/insert-category" class="btn btn-outline-secondary">Add Category</a>
+                                </div>
+                            {{-- @endif
+                        @endif --}}
 
                         @guest
                         <li class="nav-item">
@@ -101,7 +92,7 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @yield('content2')
         </main>
     </div>
 </body>

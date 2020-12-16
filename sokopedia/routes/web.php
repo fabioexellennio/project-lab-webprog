@@ -18,30 +18,28 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'HomeController@search')->name('search');
 
 
-Route::get('/product/{id}', 'ProductController@viewProductDetail');
-Route::get('/cart/{id}', 'ProductController@viewProductCart');
+Route::get('/product/{id}', 'ProductController@viewProductDetail')->middleware(auth::class);
+Route::get('/cart/{id}', 'ProductController@viewProductCart')->middleware(auth::class);
 
-Route::post('/insert-cart/{id}', 'CartController@insertCart');
-Route::get('/list-cart', 'CartController@viewCart');
-Route::delete('/remove-cart/{id}', 'CartController@deleteCart');
+Route::post('/insert-cart/{id}', 'CartController@insertCart')->middleware(auth::class);
+Route::get('/list-cart', 'CartController@viewCart')->middleware(auth::class);
+Route::delete('/remove-cart/{id}', 'CartController@deleteCart')->middleware(auth::class);
 
-Route::get('/list-cart/checkout', 'CartController@checkoutCart');
-Route::get('/transaction', 'TransactionController@viewTransaction');
-Route::get('/transaction-detail/{id}', 'TransactionController@viewDetail');
-
-
-Route::get('/admin', 'AdminController@viewAdmin');
-
-Route::get('/admin/view-product', 'AdminController@viewProductAdmin');
-Route::delete('/admin/delete-product/{id}', 'AdminController@deleteProduct');
-Route::get('/admin/insert-product', 'AdminController@insertProductAdmin');
-Route::post('/admin/insert-product/inserted', 'AdminController@postInsertProduct');
-
-Route::get('/admin/view-category', 'AdminController@viewCategoryAdmin');
-Route::get('/admin/view-category-product/{id}', 'AdminController@viewProductCategory');
-Route::get('/admin/insert-category', 'AdminController@insertCategoryAdmin');
-Route::post('/admin/insert-category/inserted', 'AdminController@postInsertCategory');
+Route::get('/list-cart/checkout', 'CartController@checkoutCart')->middleware(auth::class);
+Route::get('/transaction', 'TransactionController@viewTransaction')->middleware(auth::class);
+Route::get('/transaction-detail/{id}', 'TransactionController@viewDetail')->middleware(auth::class);
 
 
+Route::get('/admin', 'AdminController@viewAdmin')->middleware(admin::class);
+
+Route::get('/admin/view-product', 'AdminController@viewProductAdmin')->middleware(admin::class);
+Route::delete('/admin/delete-product/{id}', 'AdminController@deleteProduct')->middleware(admin::class);
+Route::get('/admin/insert-product', 'AdminController@insertProductAdmin')->middleware(admin::class);
+Route::post('/admin/insert-product/inserted', 'AdminController@postInsertProduct')->middleware(admin::class);
+
+Route::get('/admin/view-category', 'AdminController@viewCategoryAdmin')->middleware(admin::class);
+Route::get('/admin/view-category-product/{id}', 'AdminController@viewProductCategory')->middleware(admin::class);
+Route::get('/admin/insert-category', 'AdminController@insertCategoryAdmin')->middleware(admin::class);
+Route::post('/admin/insert-category/inserted', 'AdminController@postInsertCategory')->middleware(admin::class);
 
 Auth::routes();

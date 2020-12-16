@@ -15,8 +15,7 @@
         @foreach ($carts as $cart)
             <div class="col-md-4 mt-2">
                 <div class="card flex-row flex-wrap" style="width: 18rem;">
-                    <img class="card-img-left" src="{{Storage::url('images/'.$cart->product['image'])}}" alt="{{$cart->product['image']}}">
-                    
+                    <img class="card-img-top" src="{{Storage::url('images/'.$cart->product['image'])}}" alt="{{$cart->product['image']}}">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">{{$cart->product->name}}</h5>
                         <p class="card-text">Total Price: Rp.{{$cart->quantity * $cart->product->price}}</p>

@@ -8,6 +8,7 @@ use App\DetailTransaction;
 use App\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use Validator;
 
 class CartController extends Controller
@@ -16,7 +17,7 @@ class CartController extends Controller
     {
         $user = Auth::user();
         $carts = $user->carts;
-
+    
         return view('listcart', compact('carts'));
     }
 
@@ -43,6 +44,7 @@ class CartController extends Controller
                 'user_id' => Auth::user()->id
             ]
         );
+        $this->setSessionCart();
 
         return redirect('/');
     }
@@ -53,6 +55,9 @@ class CartController extends Controller
         if (isset($cart)) {
             $cart->delete();
         }
+        $this->setSessionCart();
+
+
         return redirect('/list-cart');
     }
 
@@ -60,6 +65,7 @@ class CartController extends Controller
     {
 
         $carts = Cart::where('user_id', Auth::user()->id)->get();
+        
         if (!isset($carts)) {
             return redirect('/');
         }
@@ -77,7 +83,17 @@ class CartController extends Controller
         }
 
         $carts->each->delete();
+        $this->setSessionCart();
 
         return redirect('/transaction');
+    }
+
+    public function setSessionCart(){
+        if(!Auth::user()){
+            return;
+        }
+
+        $total = Cart::where('user_id', Auth::user()->id)->get();
+        Session::put('totalItem',count($total));
     }
 }
