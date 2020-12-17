@@ -15,7 +15,7 @@
         @foreach ($data as $product)
             <div class="col-md-4">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{Storage::url('images/'.$product['image'])}}" alt="{{$product['image']}}">
+                    <img class="card-img-top" style="height:250px;object-fit:contain;" src="{{Storage::url('images/'.$product['image'])}}" alt="{{$product['image']}}">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">{{$product->name}}</h5>
                         <p class="card-text">Rp.{{$product->price}}</p>

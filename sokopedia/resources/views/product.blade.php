@@ -3,7 +3,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="d-flex">
-            <img class="card-img-top" src="{{Storage::url('images/'.$product['image'])}}" alt="{{$product['image']}}" style="width: 28rem;">
+            <img class="card-img-top"  src="{{Storage::url('images/'.$product['image'])}}" alt="{{$product['image']}}" style="width: 28rem;">
         </div>
         <div class="col-md-4" style="height:100%;">
             <div class="card" style="width: 18rem;">

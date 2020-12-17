@@ -24,28 +24,28 @@ class ProductSeeder extends Seeder
             'name' => 'Samsung TV',
             'description' => 'Samsung Tv has best curve display in the world',
             'price' => 3000000,
-            'image' => 'xiaomiTV.jpg',
+            'image' => 'samsung_TV.jpg',
             'category_id' => 2
         ]);
         Product::create([
             'name' => 'Iphone 12',
             'description' => 'Its a leap year',
             'price' => 15000000,
-            'image' => 'xiaomiTV.jpg',
+            'image' => 'iphone12_HP.jpg',
             'category_id' => 1
         ]);
         Product::create([
             'name' => 'Xiaomi 10T',
             'description' => 'Xiaomi flagship with best performance',
             'price' => 9000000,
-            'image' => 'xiaomiTV.jpg',
+            'image' => 'mi10t_HP.jpg',
             'category_id' => 1
         ]);
         Product::create([
             'name' => 'Macbook 2021',
             'description' => 'New chip m1 much better than the blue past',
             'price' => 20000000,
-            'image' => 'xiaomiTV.jpg',
+            'image' => 'macbook_Laptop.jpg',
             'category_id' => 3
         ]);
     }
